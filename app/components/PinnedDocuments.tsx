@@ -82,8 +82,9 @@ function PinnedDocuments({
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        delay: 100,
-        tolerance: 5,
+        // Activate on movement rather than a delay so that a slow click
+        // (button held without moving) still opens the document.
+        distance: 5,
       },
     }),
     useSensor(KeyboardSensor, {
